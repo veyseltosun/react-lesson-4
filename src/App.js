@@ -25,11 +25,11 @@ function App() {
     setSearch(text);
 
   }
-  const filteredUsers = users.filter((user) => {
+  const filteredUsers = useMemo(() => users.filter((user) => {
     console.log("filter is running")
-    return user.name.toLocaleLowerCase().includes(search.toLocaleLowerCase());
+    return user.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
 
-  })
+  }), [search])
   return (
     <div className="App">
       <input value={text} onChange={handleText} />
